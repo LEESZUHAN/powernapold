@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "90B5F4FE-DB7C-4A52-ACC1-F693A7221292"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "571EAB7B-4E0B-4022-944E-42CAFC048B2E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "powernap Watch App/Services/ExtendedRuntimeManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "ExtendedRuntimeManager"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "571EAB7B-4E0B-4022-944E-42CAFC048B2E - 974e8fd4b18caddb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "powernap_Watch_App.ExtendedRuntimeManager.session.getter : Swift.Optional&lt;__C.WKExtendedRuntimeSession&gt;"
+                  moduleName = "powernap Watch App.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaellee/Documents/cursor/pn/powernap/powernap%20Watch%20App/Services/ExtendedRuntimeManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "571EAB7B-4E0B-4022-944E-42CAFC048B2E - 6d6998d1d78ee7df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "powernap_Watch_App.ExtendedRuntimeManager.session.setter : Swift.Optional&lt;__C.WKExtendedRuntimeSession&gt;"
+                  moduleName = "powernap Watch App.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaellee/Documents/cursor/pn/powernap/powernap%20Watch%20App/Services/ExtendedRuntimeManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8">
+               </Location>
+               <Location
+                  uuid = "571EAB7B-4E0B-4022-944E-42CAFC048B2E - cf0435925bbe2fae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "powernap_Watch_App.ExtendedRuntimeManager.session.modify : Swift.Optional&lt;__C.WKExtendedRuntimeSession&gt;"
+                  moduleName = "powernap Watch App.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaellee/Documents/cursor/pn/powernap/powernap%20Watch%20App/Services/ExtendedRuntimeManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8">
+               </Location>
+               <Location
+                  uuid = "571EAB7B-4E0B-4022-944E-42CAFC048B2E - 97cafd5bf1ed0c69"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "powernap_Watch_App.ExtendedRuntimeManager.session.modify : Swift.Optional&lt;__C.WKExtendedRuntimeSession&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "powernap Watch App.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "571EAB7B-4E0B-4022-944E-42CAFC048B2E - 7524af90b12efb60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "powernap_Watch_App.ExtendedRuntimeManager.init() -&gt; powernap_Watch_App.ExtendedRuntimeManager"
+                  moduleName = "powernap Watch App.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaellee/Documents/cursor/pn/powernap/powernap%20Watch%20App/Services/ExtendedRuntimeManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

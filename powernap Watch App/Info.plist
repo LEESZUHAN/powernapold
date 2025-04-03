@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>NSHealthShareUsageDescription</key>
+    <string>PowerNap需要存取您的健康數據，以分析心率變異性(HRV)數據來偵測您的睡眠狀態。</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>PowerNap需要將您的睡眠資訊儲存到健康App中。</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>audio</string>
+        <string>processing</string>
+    </array>
+    <key>WKBackgroundModes</key>
+    <array>
+        <string>mindfulness</string>
+        <string>workout-processing</string>
+    </array>
+</dict>
+</plist> 

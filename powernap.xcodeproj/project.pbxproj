@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		901B16B92D9C41D80017EF36 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901B16B82D9C41D80017EF36 /* WatchKit.framework */; };
+		90658B262D9ECB0E00C0A06A /* iOS-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90658B252D9ECB0E00C0A06A /* iOS-Info.plist */; };
 		9065BC392D886CC6005ACC7D /* powernap Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9065BC382D886CC6005ACC7D /* powernap Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -49,15 +51,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		901B16B82D9C41D80017EF36 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
+		90658B252D9ECB0E00C0A06A /* iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-Info.plist"; sourceTree = "<group>"; };
 		9065BC322D886CC6005ACC7D /* powernap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = powernap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9065BC382D886CC6005ACC7D /* powernap Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "powernap Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9065BC4A2D886CC8005ACC7D /* powernap Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "powernap Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9065BC542D886CC8005ACC7D /* powernap Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "powernap Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		90658B272D9ED2F100C0A06A /* Exceptions for "powernap Watch App" folder in "powernap Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9065BC372D886CC6005ACC7D /* powernap Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9065BC3C2D886CC6005ACC7D /* powernap Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				90658B272D9ED2F100C0A06A /* Exceptions for "powernap Watch App" folder in "powernap Watch App" target */,
+			);
 			path = "powernap Watch App";
 			sourceTree = "<group>";
 		};
@@ -78,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				901B16B92D9C41D80017EF36 /* WatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,13 +116,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		901B16B72D9C41D80017EF36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				901B16B82D9C41D80017EF36 /* WatchKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9065BC2B2D886CC6005ACC7D = {
 			isa = PBXGroup;
 			children = (
 				9065BC3C2D886CC6005ACC7D /* powernap Watch App */,
 				9065BC4D2D886CC8005ACC7D /* powernap Watch AppTests */,
 				9065BC572D886CC8005ACC7D /* powernap Watch AppUITests */,
+				901B16B72D9C41D80017EF36 /* Frameworks */,
 				9065BC332D886CC6005ACC7D /* Products */,
+				90658B252D9ECB0E00C0A06A /* iOS-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -262,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90658B262D9ECB0E00C0A06A /* iOS-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,12 +479,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "powernap Watch App/powernap Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"powernap Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 8BG6CPVQP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "powernap Watch App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = powernap;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -480,12 +511,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "powernap Watch App/powernap Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"powernap Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 8BG6CPVQP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "powernap Watch App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = powernap;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -512,6 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BG6CPVQP5;
+				INFOPLIST_FILE = "powernap/iOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = powernap;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaellee.powernap;
@@ -527,6 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BG6CPVQP5;
+				INFOPLIST_FILE = "powernap/iOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = powernap;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaellee.powernap;
