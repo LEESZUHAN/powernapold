@@ -84,18 +84,17 @@ struct PowerNapView: View {
     
     // 倒計時視圖 - 使用比例佈局
     private func countdownView(geometry: GeometryProxy) -> some View {
-        VStack(spacing: geometry.size.height * 0.01) {
+        VStack(spacing: 0) {
+            // 頂部空間，確保垂直位置合適
+            Spacer().frame(height: geometry.size.height * 0.15)
+            
+            // 監測狀態文字
             if viewModel.sleepDetected {
                 Text("小睡中")
-                    .font(.system(size: min(18, geometry.size.width * 0.05)))
-                    .foregroundColor(.white.opacity(0.8))
-            } else {
-                Text("監測中")
-                    .font(.system(size: min(18, geometry.size.width * 0.05)))
-                    .foregroundColor(.white.opacity(0.8))
-            }
-            
-            if viewModel.sleepDetected {
+                    .font(.system(size: min(30, geometry.size.width * 0.1), weight: .bold))
+                    .foregroundColor(.white.opacity(0.9))
+                    .padding(.bottom, geometry.size.height * 0.02)
+                
                 // 倒計時顯示
                 Text(viewModel.formattedTimeRemaining())
                     .font(.system(size: min(48, geometry.size.width * 0.15), weight: .bold))
@@ -117,18 +116,28 @@ struct PowerNapView: View {
                 }
                 .padding(.top, geometry.size.height * 0.01)
             } else {
-                // 監測等待動畫
-                Image(systemName: "waveform.path.ecg")
-                    .font(.system(size: min(40, geometry.size.width * 0.12)))
-                    .foregroundColor(.white)
+                // 監測中文字
+                Text("監測中")
+                    .font(.system(size: min(30, geometry.size.width * 0.1), weight: .bold))
+                    .foregroundColor(.white.opacity(0.9))
+                    .padding(.bottom, geometry.size.height * 0.03)
                 
+                // 心電圖圖標
+                Image(systemName: "waveform.path.ecg")
+                    .font(.system(size: min(80, geometry.size.width * 0.25)))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity) // 確保水平居中
+                    .padding(.bottom, geometry.size.height * 0.03)
+                
+                // 等待入睡文字
                 Text("等待入睡...")
-                    .font(.system(size: min(16, geometry.size.width * 0.045)))
-                    .foregroundColor(.white.opacity(0.7))
+                    .font(.system(size: min(24, geometry.size.width * 0.08), weight: .medium))
+                    .foregroundColor(.white.opacity(0.8))
             }
+            
+            Spacer()
         }
-        // 垂直居中但稍微往上偏移
-        .padding(.top, geometry.size.height * 0.1)
+        .frame(maxWidth: .infinity) // 確保整個VStack水平居中
     }
     
     // 時間選擇器視圖 - 使用比例佈局
