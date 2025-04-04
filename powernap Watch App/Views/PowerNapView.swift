@@ -45,9 +45,16 @@ struct PowerNapView: View {
     // 按鈕區域 - 提取為函數以接收geometry參數
     private func buttonArea(geometry: GeometryProxy) -> some View {
         VStack(spacing: 0) {
-            // 根據屏幕高度調整按鈕與選擇器之間的距離，從0.2減少到0.12
-            Spacer()
-                .frame(height: geometry.size.height * 0.12)
+            // 根據不同按鈕狀態設置不同間距
+            if viewModel.isSessionActive || viewModel.sleepDetected {
+                // 取消按鈕間距較小
+                Spacer()
+                    .frame(height: geometry.size.height * 0.01)
+            } else {
+                // 開始休息按鈕間距較大
+                Spacer()
+                    .frame(height: geometry.size.height * 0.12)
+            }
             
             // 開始按鈕或控制按鈕
             if viewModel.isSessionActive || viewModel.sleepDetected {
@@ -55,8 +62,8 @@ struct PowerNapView: View {
                     Text("取消")
                         .font(.system(size: geometry.size.width * 0.1, weight: .bold))
                         .foregroundColor(.white)
-                        // 先設置固定高度，再應用背景色 - 寬度縮小到60%
-                        .frame(width: geometry.size.width * 0.60, height: geometry.size.height * 0.20) // 高度從0.25減少到0.20
+                        // 先設置固定高度，再應用背景色 - 寬度縮小到40%
+                        .frame(width: geometry.size.width * 0.40, height: geometry.size.height * 0.30)
                         .background(Color.red.opacity(0.8))
                         .cornerRadius(30)
                 }
