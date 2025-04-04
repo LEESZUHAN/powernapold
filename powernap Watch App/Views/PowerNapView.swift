@@ -3,23 +3,21 @@ import WatchKit
 
 struct PowerNapView: View {
     @ObservedObject var viewModel: PowerNapViewModel
-    @State private var selectedTime = 5
+    @State private var selectedTimeDouble: Double = 5.0
+    
+    // 計算屬性轉換為Int
+    private var selectedTime: Int {
+        return Int(selectedTimeDouble)
+    }
     
     var body: some View {
         ZStack {
-            // 背景漸變
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(red: 0.1, green: 0.2, blue: 0.45),
-                    Color(red: 0.1, green: 0.1, blue: 0.3)
-                ]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .edgesIgnoringSafeArea(.all)
+            // 背景改為純黑色
+            Color.black
+                .edgesIgnoringSafeArea(.all)
             
             // 主要內容
-            VStack(spacing: 20) {
+            VStack(spacing: 0) {
                 // 顯示當前時間
                 if viewModel.isSessionActive || viewModel.sleepDetected {
                     // 監測或睡眠狀態下顯示倒計時
@@ -28,6 +26,8 @@ struct PowerNapView: View {
                     // 時間選擇器
                     timePickerView
                 }
+                
+                Spacer(minLength: 0) // 確保按鈕位置穩定
                 
                 // 開始按鈕或控制按鈕
                 if viewModel.isSessionActive || viewModel.sleepDetected {
@@ -39,8 +39,9 @@ struct PowerNapView: View {
                             .padding(.vertical, 12)
                             .background(Color.red.opacity(0.8))
                             .cornerRadius(20)
+                            .frame(maxWidth: .infinity) // 確保按鈕佔據可用寬度
                     }
-                    .padding(.top, 20)
+                    .buttonStyle(BorderlessButtonStyle()) // 使用無邊框按鈕樣式
                 } else {
                     Button(action: {
                         viewModel.setDuration(selectedTime)
@@ -53,12 +54,13 @@ struct PowerNapView: View {
                             .padding(.vertical, 12)
                             .background(Color.blue)
                             .cornerRadius(20)
+                            .frame(maxWidth: .infinity) // 確保按鈕佔據可用寬度
                     }
-                    .padding(.top, 20)
+                    .buttonStyle(BorderlessButtonStyle()) // 使用無邊框按鈕樣式
                     
                     // 快速時間選擇按鈕
                     HStack(spacing: 10) {
-                        Button(action: { selectedTime = 5 }) {
+                        Button(action: { selectedTimeDouble = 5.0 }) {
                             Text("5分鐘")
                                 .font(.system(size: 14))
                                 .padding(.horizontal, 12)
@@ -68,7 +70,7 @@ struct PowerNapView: View {
                                 .cornerRadius(15)
                         }
                         
-                        Button(action: { selectedTime = 10 }) {
+                        Button(action: { selectedTimeDouble = 10.0 }) {
                             Text("10分鐘")
                                 .font(.system(size: 14))
                                 .padding(.horizontal, 12)
@@ -80,11 +82,15 @@ struct PowerNapView: View {
                     }
                     .padding(.top, 10)
                 }
+                
+                Spacer(minLength: 20) // 底部留一點空間
             }
             .padding()
         }
         .onAppear {
-            selectedTime = viewModel.selectedDuration
+            selectedTimeDouble = Double(viewModel.selectedDuration)
+            // 添加數字錶冠控制
+            WKInterfaceDevice.current().play(.click)
         }
     }
     
@@ -136,29 +142,44 @@ struct PowerNapView: View {
     
     // 時間選擇器視圖
     private var timePickerView: some View {
-        VStack(spacing: 15) {
-            Text("等待開始")
-                .font(.system(size: 18))
-                .foregroundColor(.white.opacity(0.8))
+        VStack(spacing: 0) {
+            // 增加頂部空間，讓內容顯著往下移
+            Spacer(minLength: 110)
             
-            // 時間選擇器，支持手指滑動和錶冠
-            Picker("選擇時間", selection: $selectedTime) {
-                ForEach(1...30, id: \.self) { minute in
-                    Text("\(minute):00")
-                        .foregroundColor(.white)
-                        .tag(minute)
+            // 自定義時間選擇器
+            ZStack {
+                // 灰色背景框
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.gray, lineWidth: 2)
+                    .background(Color.black.opacity(0.3))
+                    .cornerRadius(20)
+                
+                // 時間選擇器內容
+                Picker("選擇時間", selection: $selectedTimeDouble) {
+                    ForEach(1...30, id: \.self) { minute in
+                        Text("\(minute):00")
+                            .foregroundColor(.white)
+                            .tag(Double(minute))
+                    }
+                }
+                .pickerStyle(WheelPickerStyle())
+                .labelsHidden()
+                .accentColor(.gray) // 嘗試設置選擇指示器顏色
+                .onChange(of: selectedTimeDouble) { _ in
+                    WKInterfaceDevice.current().play(.click)
                 }
             }
-            .pickerStyle(WheelPickerStyle())
-            .frame(height: 100)
-            .labelsHidden()
-            .onChange(of: selectedTime) { newValue in
-                WKInterfaceDevice.current().play(.click)
-            }
+            .frame(height: 110)
+            .padding(.bottom, 5)
             
+            // 分鐘文字放在選擇器下方
             Text("分鐘")
-                .font(.system(size: 16))
-                .foregroundColor(.white.opacity(0.8))
+                .font(.system(size: 18)) // 稍微縮小字體
+                .fontWeight(.regular)
+                .foregroundColor(.white.opacity(0.7))
+                .padding(.bottom, 20) // 調整底部間距
+             
+            // 移除底部Spacer，讓按鈕位置更穩定
         }
     }
 } 
