@@ -45,9 +45,9 @@ struct PowerNapView: View {
     // 按鈕區域 - 提取為函數以接收geometry參數
     private func buttonArea(geometry: GeometryProxy) -> some View {
         VStack(spacing: 0) {
-            // 根據屏幕高度調整按鈕與選擇器之間的距離
+            // 根據屏幕高度調整按鈕與選擇器之間的距離，從0.2減少到0.12
             Spacer()
-                .frame(height: geometry.size.height * 0.2) // 增加間距讓按鈕往下移
+                .frame(height: geometry.size.height * 0.12)
             
             // 開始按鈕或控制按鈕
             if viewModel.isSessionActive || viewModel.sleepDetected {
@@ -56,7 +56,7 @@ struct PowerNapView: View {
                         .font(.system(size: geometry.size.width * 0.1, weight: .bold))
                         .foregroundColor(.white)
                         // 先設置固定高度，再應用背景色 - 寬度縮小到60%
-                        .frame(width: geometry.size.width * 0.60, height: geometry.size.height * 0.25)
+                        .frame(width: geometry.size.width * 0.60, height: geometry.size.height * 0.20) // 高度從0.25減少到0.20
                         .background(Color.red.opacity(0.8))
                         .cornerRadius(30)
                 }
@@ -77,16 +77,16 @@ struct PowerNapView: View {
                 .buttonStyle(BorderlessButtonStyle())
             }
             
-            // 底部空間
-            Spacer(minLength: geometry.size.height * 0.05)
+            // 增加底部空間，從0.05增加到0.08
+            Spacer(minLength: geometry.size.height * 0.08)
         }
     }
     
     // 倒計時視圖 - 使用比例佈局
     private func countdownView(geometry: GeometryProxy) -> some View {
         VStack(spacing: 0) {
-            // 頂部空間，確保垂直位置合適
-            Spacer().frame(height: geometry.size.height * 0.15)
+            // 頂部空間，從0.08減少到0.01，幾乎無間距但保留少量以保持結構
+            Spacer().frame(height: geometry.size.height * 0.01)
             
             // 監測狀態文字
             if viewModel.sleepDetected {
@@ -120,14 +120,14 @@ struct PowerNapView: View {
                 Text("監測中")
                     .font(.system(size: min(30, geometry.size.width * 0.1), weight: .bold))
                     .foregroundColor(.white.opacity(0.9))
-                    .padding(.bottom, geometry.size.height * 0.03)
+                    .padding(.bottom, geometry.size.height * 0.02)
                 
                 // 心電圖圖標
                 Image(systemName: "waveform.path.ecg")
                     .font(.system(size: min(80, geometry.size.width * 0.25)))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity) // 確保水平居中
-                    .padding(.bottom, geometry.size.height * 0.03)
+                    .padding(.bottom, geometry.size.height * 0.02)
                 
                 // 等待入睡文字
                 Text("等待入睡...")
